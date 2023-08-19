@@ -63,6 +63,7 @@
         <input type="text" id="nome" name="nome" required>
         <button type="submit">Cadastrar</button>
     </form>
+      a
     </div>
 
 
