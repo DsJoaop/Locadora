@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 
 @WebServlet("/AtorController")
@@ -24,8 +25,8 @@ public class AtorController extends HttpServlet {
         String nome = req.getParameter("nome");
 
         AtorApplication banco = new AtorApplication();
-        System.out.println(nome);
         AtorDTO atorDTO = new AtorDTO(nome);
         banco.inserir(atorDTO);
+
     }
 }
