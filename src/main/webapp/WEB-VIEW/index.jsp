@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="br.com.trabalho.Model.Domain.AtorDTO" %>
+<%@ page import="br.com.trabalho.Model.Application.AtorApplication" %>
+<%@ page import="java.util.List" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +26,6 @@
     <div class="form-container">
         <h2>Cadastrar Ator</h2>
         <form action="AtorController" method="post">
-
             <!-- Indicando ao controllador que tipo de ação ele deverá ter -->
             <input type="hidden" name="acao" value="inserir">
 
@@ -30,7 +33,6 @@
             <input type="text" id="nome" name="nome" required>
             <button type="submit">Cadastrar</button>
         </form>
-        a
     </div>
 
 
@@ -45,20 +47,27 @@
                 <th>Ações</th>
             </tr>
             </thead>
-            <tbody>
-            <c:forEach items="${atores}" var="ator">
-                <tr>
-                    <td>${ator.id}</td>
-                    <td>${ator.nome}</td>
-                    <td>
-                        <a href="EditarAtorServlet?id=${ator.id}&acao=editar">Editar</a>
-                        <a href="ExcluirAtorServlet?id=${ator.id}&acao=excluir">Excluir</a>
-                        <button> Ok</button>
-                        <button> Cancelar</button>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
+              <tbody>
+                  <%
+                      AtorApplication atorApplication = new AtorApplication();
+                      List<AtorDTO> listaAtores = atorApplication.listar(AtorDTO.class);
+
+                      for (AtorDTO ator : listaAtores) {
+                  %>
+                  <tr>
+                      <td><%= ator.getId_ator() %></td>
+                      <td><%= ator.getNome() %></td>
+                      <td>
+                          <a href="EditarAtorServlet?id=${ator.id}" >Editar</a>
+                          <a href="AtorController?acao=excluir&id_ator=<%= ator.getId_ator() %>" >Excluir</a>
+                          <button> Ok </button>
+                          <button> Cancelar </button>
+                      </td>
+                  </tr>
+                  <%
+                      }
+                  %>
+              </tbody>
         </table>
 
         <!-- Fim da listagem de atores -->

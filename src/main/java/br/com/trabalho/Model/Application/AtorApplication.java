@@ -2,6 +2,7 @@ package br.com.trabalho.Model.Application;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.*;
 
 import br.com.trabalho.Model.Domain.AtorDTO;
@@ -21,25 +22,27 @@ public class AtorApplication extends GenericApplication{
             sessao.beginTransaction();
 
             CriteriaBuilder builder = sessao.getCriteriaBuilder();
-            CriteriaQuery consulta = builder.createQuery(AtorDTO.class );
+            CriteriaQuery consulta = builder.createQuery(AtorDTO.class);
             Root tabela = consulta.from(AtorDTO.class);
-            
+
             Expression expressaoPesquisada = null;
             Predicate restricoes = null;
 
             expressaoPesquisada = tabela.get("id_ator");
-            restricoes = builder.equal(expressaoPesquisada, pesquisa);               
-                        
+            restricoes = builder.equal(expressaoPesquisada, pesquisa);
+
             consulta.where(restricoes);
-            
-            atorEncontrado = (AtorDTO) sessao.createQuery(consulta).getSingleResult();   
+
+            atorEncontrado = (AtorDTO) sessao.createQuery(consulta).getSingleResult();
 
 
             sessao.getTransaction().commit();
             sessao.close();
+        } catch (NoResultException ex) {
+            // O id_ator não foi encontrado, então não faz nada e retorna null
         } catch (HibernateException ex) {
-            if (sessao != null ) {
-                sessao.getTransaction().rollback();          
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
                 sessao.close();
             }
             throw new HibernateException(ex);

@@ -7,11 +7,14 @@ import java.util.List;
 
 public class teste {
     public static void main(String[] args){
-        AtorDTO ator = new AtorDTO("joao");
+
         AtorApplication banco = new AtorApplication();
-        banco.inserir(ator);
-        ator.setNome("eduardo");
-        banco.alterar(ator);
-        banco.excluir(ator);
+        AtorDTO ator = banco.findById("2");
+        System.out.println(ator);
+
+        AtorDTO ator2 = banco.findById("2");
+        System.out.println(ator2.getNome());
+
+
     }
 }

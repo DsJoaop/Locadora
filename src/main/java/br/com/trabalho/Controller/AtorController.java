@@ -20,13 +20,33 @@ public class AtorController extends HttpServlet {
 
     }
 
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nome = req.getParameter("nome");
-
         AtorApplication banco = new AtorApplication();
-        AtorDTO atorDTO = new AtorDTO(nome);
-        banco.inserir(atorDTO);
+        AtorDTO atorDTO = new AtorDTO();
 
+        String nome = req.getParameter("nome");
+        String id_ator = req.getParameter("id_ator");
+
+        String tipoRequisicao = req.getParameter("acao");
+
+        switch (tipoRequisicao){
+            case "inserir":
+                atorDTO.setNome(nome);
+                banco.inserir(atorDTO);
+                break;
+            case "editar":
+                atorDTO = banco.findById(id_ator);
+                atorDTO.setNome(nome);
+                banco.alterar(atorDTO);
+                break;
+            case "excluir":
+                atorDTO = banco.findById(id_ator);
+                banco.excluir(atorDTO);
+                break;
+            default:
+                break;
+        }
     }
 }
