@@ -6,15 +6,14 @@ import javax.persistence.*;
 public class AtorDTO {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_ator;
-	
+
 	@Column(name = "nome", length = 50)
 	private String nome;
-	
+
 	public AtorDTO() {
 	}
 
 	public AtorDTO(String nome) {
-		this.id_ator = id_ator;
 		this.nome = nome;
 	}
 

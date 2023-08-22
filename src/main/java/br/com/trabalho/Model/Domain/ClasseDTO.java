@@ -8,24 +8,19 @@ public class ClasseDTO {
     @Column(name = "nome", length = 50)
     private String nome;
 
+    @Column(name = "valor")
+    private float valor;
+
     @Column(name = "prazo_devolucao")
     private int prazoDevolucao;
 
     public ClasseDTO() {
     }
 
-    public ClasseDTO(int id_classe, String nome, int prazoDevolucao) {
-        this.id_classe = id_classe;
+    public ClasseDTO(String nome, float valor, int prazoDevolucao) {
         this.nome = nome;
+        this.valor = valor;
         this.prazoDevolucao = prazoDevolucao;
-    }
-
-    public int getId_classe() {
-        return id_classe;
-    }
-
-    public void setId_classe(int id_classe) {
-        this.id_classe = id_classe;
     }
 
     public String getNome() {
@@ -34,6 +29,14 @@ public class ClasseDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
     }
 
     public int getPrazoDevolucao() {

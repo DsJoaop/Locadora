@@ -1,152 +1,278 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
+
 .tabs {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-top: 30px;
 }
 
 .tab-button {
-  background-color: #1069a5;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  font-size: 18px;
-  border-radius: 8px 8px 0 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    background-color: #1069a5;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 18px;
+    border-radius: 8px 8px 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .tab-button:hover {
-  background-color: #002f4e;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(255, 107, 107, 0.2);
+    background-color: #002f4e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(255, 107, 107, 0.2);
 }
 
 
-.form-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-bottom: 120px;
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-form label{
-  margin-bottom: 10px;
-  font-size: 16px;
+body > ul {
+    list-style: none;
 }
 
-form input {
-  display: block;
-  width: 95%;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border-color 0.3s;
+li > a {
+    color: white;
 }
 
-form input:focus {
-  border-color: #3498db;
+button {
+    cursor: pointer;
 }
 
-form button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  border-radius: 5px;
-  font-size: 18px;
+.container {
+    width: 90%;
+    height: 80%;
+    border-radius: 10px;
+    background: white;
 }
 
-form button:hover {
-  background-color: #2980b9;
+.header {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto 12px;
+}
+
+.header span {
+    font-weight: 900;
+    font-size: 20px;
+    word-break: break-all;
+}
+
+#new {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #1069a5;
+}
+
+.divTable {
+    padding: 10px;
+    width: auto;
+    height: inherit;
+    overflow: auto;
+}
+
+.divTable::-webkit-scrollbar {
+    width: 12px;
+    background-color: whitesmoke;
+}
+
+.divTable::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: darkgray;
+}
+
+table {
+    width: 100%;
+    border-spacing: 10px;
+    word-break: break-all;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: whitesmoke;
+}
+
+tr {
+    border-bottom: 1px solid #1069a5 !important;
+}
+
+tbody tr td {
+    vertical-align: text-top;
+    padding: 6px;
+    max-width: 50px;
+}
+
+thead tr th {
+    padding: 5px;
+    text-align: start;
+    margin-bottom: 50px;
+}
+
+tbody tr {
+    margin-bottom: 50px;
+}
+
+thead tr th.acao {
+    width: 100px !important;
+    text-align: center;
+}
+
+tbody tr td.acao {
+    text-align: center;
 }
 
 
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+}
 
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: white;
+    border-radius: 10px;
+    width: 30%;
+}
 
-/* Css da tabela */
+.modal label {
+    font-size: 14px;
+    width: 100%;
+}
 
+.modal input {
+    width: 100%;
+    outline: none;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
 
+.modal button {
+    width: 100%;
+    margin: 10px auto;
+    outline: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #1069a5;;
+    color: white;
+}
 
-.table-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+.active {
+    display: flex;
+}
+
+.active .modal {
+    animation: modal .4s;
+}
+
+@keyframes modal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+td button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+td button i {
+    font-size: 25px;
+}
+
+td button i:first-child {
+    margin-right: 10px;
 }
 
 
-.table-container > table{
-  width: 100%;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  border-radius: 7px;
-}
+@media (max-width: 700px) {
+    .tab-button {
+        background-color: #1069a5;
+        color: white;
+        border: none;
+        padding: 12px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        font-size: 12px;
+        border-radius: 8px 8px 0 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 
 
-.table-container td, th{
-  padding: 20px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
+    body {
+        font-size: 10px;
+    }
 
-}
+    .header span {
+        font-size: 15px;
+    }
 
-.table-container th {
-  background-color: #f7f5f5;
-}
+    #new {
+        padding: 5px;
+        font-size: 10px;
+    }
 
+    thead tr th.acao {
+        width: auto !important;
+    }
 
+    td button i {
+        font-size: 20px !important;
+    }
 
-.table-container button, a {
+    td button i:first-child {
+        margin-right: 0;
+    }
 
-  font-size: 16px;
-  background-color: #3498db;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  margin: 10px 10px;
-}
+    .modal {
+        width: 90% !important;
+    }
 
-.table-container button:hover, a:hover {
-  background-color: #2980b9;
-}
-
-
-
-
-/* Animations */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.tab-content {
-  animation: fadeIn 0.5s ease-in-out;
+    .modal label {
+        font-size: 12px !important;
+    }
 }
