@@ -25,7 +25,7 @@ function openModalAtor(id, nome) {
         }
 
         nome = novoNome.value;
-        id = idAtual;
+        id = idAtual.value;
     };
 }
 
