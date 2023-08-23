@@ -9,11 +9,10 @@ public class teste {
     public static void main(String[] args){
 
         AtorApplication banco = new AtorApplication();
-        AtorDTO ator = banco.findById("2");
-        System.out.println(ator);
+        AtorDTO ator = new AtorDTO("Joao");
 
-        AtorDTO ator2 = banco.findById("2");
-        System.out.println(ator2.getNome());
+        banco.inserir(ator);
+
 
 
     }
