@@ -19,49 +19,15 @@ function openModal() {
 function openModalAtor(id, nome) {
     modalAtor.classList.add('active');
 
-    modalAtor.onclick = e => {
-        if (e.target.className.indexOf('modal-container-editAtor') !== -1) {
-            modalAtor.classList.remove('active');
-        }
-
-        nome = novoNome.value;
-        id = idAtual.value;
-    };
+    idAtual.value = id; // Set the value of id-ator input field
+    novoNome.value = nome; // Set the value of novo-nome input field
 }
 
-
-
-
-/*
-function insertItem(item) {
-    let tr = document.createElement('tr');
-
-    tr.innerHTML = `
-    <td>${item.id}</td>
-    <td>${item.nome}</td>
-    <td class="acao">
-      <button onclick="editItem(${item.id})"><i class='bx bx-edit' ></i></button>
-    </td>
-    <td class="acao">
-      <button onclick="deleteItem(${item.id})"><i class='bx bx-trash'></i></button>
-    </td>
-  `;
-
-    tbody.appendChild(tr);
-}
-*/
-/*
-function loadItens() {
-    fetch('AtorController')
-        .then(response => response.json())
-        .then(data => {
-            tbody.innerHTML = '';
-            data.forEach(item => insertItem(item));
-        })
-        .catch(error => {
-            console.error('Erro ao obter dados:', error);
-        });
-}
-
-loadItens();
-*/
+// Modify the click event listener for modalAtor to clear the values
+modalAtor.addEventListener('click', e => {
+    if (e.target.className.includes('modal-container-editAtor')) {
+        modalAtor.classList.remove('active');
+        idAtual.value = ''; // Clear the value of id-ator input field
+        novoNome.value = ''; // Clear the value of novo-nome input field
+    }
+});

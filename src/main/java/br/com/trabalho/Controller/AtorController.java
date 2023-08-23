@@ -24,12 +24,13 @@ public class AtorController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String tipoRequisicao = req.getParameter("acao");
+        System.out.println(tipoRequisicao);
 
         switch (tipoRequisicao){
             case "inserir":
                 inserirAtor(req);
                 break;
-            case "alterar":
+            case "editar":
                 editarAtor(req);
                 break;
             case "excluir":
@@ -51,8 +52,10 @@ public class AtorController extends HttpServlet {
     private void editarAtor(HttpServletRequest req){
         String nome_ator = req.getParameter("nome");
         String id_ator = req.getParameter("id_ator");
-
+        System.out.println("ID:" + id_ator);
+        System.out.println(nome_ator);
         AtorDTO ator = banco.findById(id_ator);
+        System.out.println(ator.getNome());
         ator.setNome(nome_ator);
 
         banco.alterar(ator);

@@ -55,8 +55,10 @@
                             <%= ator.getNome() %>
                         </td>
                         <td class="editar">
-                            <button onclick="openModalAtor( <%= ator.getId_ator()%>,<%= ator.getNome()%> )"><i
-                                    class='bx bx-trash'></i></button>
+                        <button onclick="openModalAtor('<%= ator.getId_ator() %>', '<%= ator.getNome() %>')">
+                            <i class='bx bx-edit'></i>
+                        </button>
+
                         </td>
                         <td class="deletar">
                             <a href="AtorController?acao=excluir&id_ator=<%= ator.getId_ator() %>">
@@ -92,11 +94,11 @@
                         <!-- Atribuindo tipo de operação ao controlador -->
                         <input type="hidden" name="acao" value="editar">
 
-                        <label for="novo-nome">Nome do Ator:</label>
-                        <input type="text" id="id-ator" name="novoNome" disabled>
 
-                        <label for="novo-nome">Nome do Ator:</label>
-                        <input type="text" id="novo-nome" name="novoNome" required>
+                        <input type="hidden" id="id-ator" name="id_ator">
+
+                        <label for="nome">Nome do Ator:</label>
+                        <input type="text" id="novo-nome" name="nome" required>
 
                         <button type="submit">Atualizar</button>
                     </form>
