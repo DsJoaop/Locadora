@@ -144,6 +144,19 @@ tbody tr td.acao {
     text-align: center;
 }
 
+.modal-container-editAtor {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .modal-container {
     width: 100vw;

@@ -1,29 +1,36 @@
 const modal = document.querySelector('.modal-container');
-const tbody = document.querySelector('tbody');
-const sNome = document.querySelector('#m-nome');
-const btnSalvar = document.querySelector('#btnSalvar');
+const modalAtor = document.querySelector('.modal-container-editAtor');
 
-function openModal(edit = false, index = 0) {
+let novoNome = document.querySelector('#novo-nome')
+let idAtual = document.querySelector('#id-ator')
+
+
+function openModal() {
     modal.classList.add('active');
 
     modal.onclick = e => {
         if (e.target.className.indexOf('modal-container') !== -1) {
             modal.classList.remove('active');
         }
+
     };
 }
 
-btnSalvar.onclick = e => {
-    if (sNome.value === '') {
-        return;
-    }
+function openModalAtor(id, nome) {
+    modalAtor.classList.add('active');
 
-    e.preventDefault();
+    modalAtor.onclick = e => {
+        if (e.target.className.indexOf('modal-container-editAtor') !== -1) {
+            modalAtor.classList.remove('active');
+        }
 
-    modal.classList.remove('active');
-   /*  insertItem({ nome: sNome.value }); // Simula inserção na tabela */
-    sNome.value = ''; // Limpa o campo de nome
-};
+        nome = novoNome.value;
+        id = idAtual;
+    };
+}
+
+
+
 
 /*
 function insertItem(item) {
