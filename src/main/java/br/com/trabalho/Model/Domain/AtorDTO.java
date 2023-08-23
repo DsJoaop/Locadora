@@ -7,7 +7,7 @@ public class AtorDTO {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_ator;
 
-	@Column(name = "nome", length = 50)
+	@Column(length = 50)
 	private String nome;
 
 	public AtorDTO() {
