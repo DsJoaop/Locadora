@@ -51,6 +51,9 @@ body > ul {
 
 li > a {
     color: white;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;;
 }
 
 button {
@@ -79,8 +82,8 @@ button {
 }
 
 #new {
-    font-size: 16px;
-    padding: 8px;
+    font-size: 18px;
+    padding: 10px;
     border-radius: 5px;
     border: none;
     color: white;
@@ -121,13 +124,14 @@ tr {
 
 tbody tr td {
     vertical-align: text-top;
+    text-align: center;
     padding: 6px;
     max-width: 50px;
 }
 
 thead tr th {
     padding: 5px;
-    text-align: start;
+    text-align: center;
     margin-bottom: 50px;
 }
 
@@ -155,16 +159,6 @@ tbody tr td.acao {
     z-index: 999;
     align-items: center;
     justify-content: center;
-}
-
-ul {
-    list-style-type: none; /* Remove os marcadores de lista */
-    padding: 0; /* Remove o espaçamento padrão da lista */
-}
-
-/* Para remover o sublinhado dos itens de lista (<li>) */
-ul li {
-    text-decoration: none;
 }
 
 .modal-container {
