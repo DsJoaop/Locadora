@@ -53,13 +53,13 @@
                         <td>
                             <%= ator.getNome() %>
                         </td>
-                        <td class="editar">
+                        <td class="editar acao">
                         <button onclick="openModalAtor('<%= ator.getId_ator() %>', '<%= ator.getNome() %>')">
                             <i class='bx bx-edit'></i>
                         </button>
 
                         </td>
-                        <td class="deletar">
+                        <td class="deletar acao">
                             <a href="AtorController?acao=excluir&id_ator=<%= ator.getId_ator() %>">
                                 <button><i class='bx bx-trash'></i></button>
                             </a>

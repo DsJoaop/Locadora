@@ -59,13 +59,13 @@
                         <td>
                             <%= classe.getPrazoDevolucao() %>
                         </td>
-                        <td class="editar">
+                        <td class="editar acao">
                         <button onclick="openModalClasse('<%= classe.getId_classe() %>', '<%= classe.getNome() %>', '<%= classe.getValor() %>', '<%= classe.getPrazoDevolucao() %>')">
                             <i class='bx bx-edit'></i>
                         </button>
 
                         </td>
-                        <td class="deletar">
+                        <td class="deletar acao">
                             <a href="ClasseController?acao=excluir&id_classe=<%= classe.getId_classe() %>">
                                 <button><i class='bx bx-trash'></i></button>
                             </a>

@@ -1,39 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
 
+
+/* Inserindo estilo geral*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
-
-.tabs {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    margin-top: 30px;
-}
-
-.tab-button {
-    background-color: #1069a5;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    font-size: 18px;
-    border-radius: 8px 8px 0 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.tab-button:hover {
-    background-color: #002f4e;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(255, 107, 107, 0.2);
-}
-
 
 body {
     width: 100vw;
@@ -60,6 +34,69 @@ button {
     cursor: pointer;
 }
 
+
+
+
+
+
+/* Inserindo estilo da navegação*/
+.tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 1px;
+}
+
+.tab-button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Adicionado box-shadow à transição */
+    font-size: 18px;
+    border-radius: 8px 8px 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none; /* Removido contorno ao focar */
+}
+
+.tab-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 10px rgba(52, 152, 219, 0.4);
+}
+
+.tab-button:focus {
+    background-color: #2980b9;
+    box-shadow: 0 6px 10px rgba(52, 152, 219, 0.4);
+}
+
+
+.tab-button:active {
+    animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+
+.tab-content {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 60px);
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 10px;
+    }
+
+
+
+
+
+/* Inserindo estilo do container das abas*/
 .container {
     width: 90%;
     height: 80%;
@@ -81,15 +118,42 @@ button {
     word-break: break-all;
 }
 
+
+
+
+
+/* Inserindo estilo do botão de incluir*/
 #new {
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 5px;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 8px;
     border: none;
     color: white;
-    background-color: #1069a5;
+    background-color: #3498db;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
+#new:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.4);
+}
+
+#new:focus {
+    background-color: #2980b9;
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.4);
+}
+
+#new:active {
+    transform: scale(0.98);
+}
+
+
+
+
+
+/* Inserindo estilo das tabelas*/
 .divTable {
     padding: 10px;
     width: auto;
@@ -119,19 +183,18 @@ thead {
 }
 
 tr {
-    border-bottom: 1px solid #1069a5 !important;
+    border-bottom: 1px solid rgb(238, 235, 235)!important;
 }
 
 tbody tr td {
     vertical-align: text-top;
-    text-align: center;
     padding: 6px;
     max-width: 50px;
 }
 
 thead tr th {
     padding: 5px;
-    text-align: center;
+    text-align: start;
     margin-bottom: 50px;
 }
 
@@ -139,19 +202,24 @@ tbody tr {
     margin-bottom: 50px;
 }
 
-thead tr th {
+thead tr th.acao {
     width: 100px !important;
-    text-align: center !important;
+    text-align: center;
 }
 
-tbody tr td{
-    text-align: center !important;
-    vertical-align: text-top;
-    padding: 6px;
-    max-width: 50px;
+tbody tr td.acao {
+    margin-right: 20px;
+    text-align: center;
 }
 
 
+
+
+
+
+
+
+/* Inserindo estilo das janelas modais*/
 .modal-container {
     width: 100vw;
     height: 100vh;
@@ -195,10 +263,29 @@ tbody tr td{
     margin: 10px auto;
     outline: none;
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 10px 5px;
     border: none;
-    background-color: #1069a5;;
+    background-color: #3498db;
     color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.modal button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.4);
+}
+
+.modal button:focus {
+    background-color: #2980b9;
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.4);
+}
+
+.modal button:active {
+    transform: scale(0.98);
 }
 
 .active {
@@ -208,6 +295,39 @@ tbody tr td{
 .active .modal {
     animation: modal .4s;
 }
+
+
+
+
+
+
+
+
+/* Inserindo estilo de ícone*/
+.bx-trash, .bx-edit {
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.bx-trash {
+    color: #ff4d4d;
+}
+
+.bx-edit {
+    color: #00bfff;
+}
+
+.bx-trash:hover {
+    color: #e60000;
+}
+
+.bx-edit:hover {
+    color: #0088cc;
+}
+
+
+
+
 
 @keyframes modal {
     from {
