@@ -1,8 +1,6 @@
 package br.com.trabalho.Controller;
 
-import br.com.trabalho.Model.Application.AtorApplication;
 import br.com.trabalho.Model.Application.ClasseApplication;
-import br.com.trabalho.Model.Domain.AtorDTO;
 import br.com.trabalho.Model.Domain.ClasseDTO;
 
 import javax.servlet.ServletException;
@@ -15,7 +13,7 @@ import java.io.IOException;
 @WebServlet("/ClasseController")
 public class ClasseController extends HttpServlet {
 
-    private ClasseApplication banco = new ClasseApplication();
+    private final ClasseApplication banco = new ClasseApplication();
     public ClasseController() {
     }
 
@@ -36,22 +34,23 @@ public class ClasseController extends HttpServlet {
             default:
                 break;
         }
+        resp.sendRedirect("classe.jsp");
     }
 
     private void inserirClasse(HttpServletRequest req){
-        String nome_classe = req.getParameter("nome_classe");
-        float valor = Float.valueOf(req.getParameter("valor"));
-        int prazo_devolucao = Integer.valueOf(req.getParameter("prazo_devolucao"));
+        String nome_classe = req.getParameter("nome");
+        float valor = Float.parseFloat(req.getParameter("valor"));
+        int prazo_devolucao = Integer.parseInt(req.getParameter("data"));
 
         ClasseDTO classe = new ClasseDTO(nome_classe, valor, prazo_devolucao);
         banco.inserir(classe);
     }
 
     private void editarClasse(HttpServletRequest req){
-        String id_classe = req.getParameter("id_classe");
-        String nome_classe = req.getParameter("nome_classe");
-        float valor = Float.valueOf(req.getParameter("valor"));
-        int prazo_devolucao = Integer.valueOf(req.getParameter("prazo_devolucao"));
+        String id_classe = req.getParameter("id-classe");
+        String nome_classe = req.getParameter("novo-nome");
+        float valor = Float.parseFloat(req.getParameter("novo-valor"));
+        int prazo_devolucao = Integer.parseInt(req.getParameter("nova-data"));
 
         ClasseDTO classe = banco.findById(id_classe);
         classe.setNome(nome_classe);

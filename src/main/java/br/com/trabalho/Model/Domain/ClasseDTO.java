@@ -1,6 +1,9 @@
 package br.com.trabalho.Model.Domain;
 
 import javax.persistence.*;
+
+
+@Entity(name = "Classe")
 public class ClasseDTO {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_classe;
@@ -21,6 +24,10 @@ public class ClasseDTO {
         this.nome = nome;
         this.valor = valor;
         this.prazoDevolucao = prazoDevolucao;
+    }
+
+    public int getId_classe() {
+        return id_classe;
     }
 
     public String getNome() {
