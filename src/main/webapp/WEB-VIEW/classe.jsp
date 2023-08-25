@@ -17,110 +17,121 @@
 
 <body>
 
-    <ul class="tabs">
-        <li class="tab-button"><a href="index.jsp"> Ator</a></li>
-        <li class="tab-button"><a href="classe.jsp"> Classe </a></li>
-    </ul>
+<ul class="tabs">
+    <li class="tab-button"><a href="index.jsp"> Ator</a></li>
+    <li class="tab-button"><a href="classe.jsp"> Classe </a></li>
+</ul>
 
 
-    <div class="container">
-        <div id="ator" class="tab-content">
-            <div class="header">
-                <span>Cadastro de Atores</span>
-                <button onclick="openModal()" id="new"><i>Incluir</i></button>
-            </div>
+<div class="container">
+    <div id="ator" class="tab-content">
+        <div class="header">
+            <span>Cadastro de Atores</span>
+            <button onclick="openModal()" id="new"><i>Incluir</i></button>
+        </div>
 
-            <div class="divTable">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>valor</th>
-                        <th>prazo (dias)</th>
-                        <th class="acao">Editar</th>
-                        <th class="acao">Excluir</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%
-                        ClasseApplication classeApplication = new ClasseApplication();
-                        List<ClasseDTO> listaClasses = classeApplication.listar(ClasseDTO.class);
+        <div class="divTable">
+            <table>
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>valor</th>
+                    <th>prazo (dias)</th>
+                    <th class="acao">Editar</th>
+                    <th class="acao">Excluir</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                    ClasseApplication classeApplication = new ClasseApplication();
+                    List<ClasseDTO> listaClasses = classeApplication.listar(ClasseDTO.class);
 
-                        for (ClasseDTO classe : listaClasses) {
-                    %>
-                    <tr>
-                        <td>
-                            <%= classe.getNome() %>
-                        </td>
-                        <td>
-                            <%= classe.getValor() %>
-                        </td>
+                    for (ClasseDTO classe : listaClasses) {
+                %>
+                <tr>
+                    <td>
+                        <%= classe.getNome() %>
+                    </td>
+                    <td>
+                        <%= classe.getValor() %>
+                    </td>
 
-                        <td>
-                            <%= classe.getPrazoDevolucao() %>
-                        </td>
-                        <td class="editar acao">
+                    <td>
+                        <%= classe.getPrazoDevolucao() %>
+                    </td>
+                    <td class="editar acao">
                         <button onclick="openModalClasse('<%= classe.getId_classe() %>', '<%= classe.getNome() %>', '<%= classe.getValor() %>', '<%= classe.getPrazoDevolucao() %>')">
                             <i class='bx bx-edit'></i>
                         </button>
 
-                        </td>
-                        <td class="deletar acao">
-                            <a href="ClasseController?acao=excluir&id_classe=<%= classe.getId_classe() %>">
-                                <button><i class='bx bx-trash'></i></button>
-                            </a>
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
+                    </td>
+                    <td class="deletar acao">
+                        <a href="ClasseController?acao=excluir&id_classe=<%= classe.getId_classe() %>">
+                            <button><i class='bx bx-trash'></i></button>
+                        </a>
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-container">
+            <div class="modal">
+                <form method="post" action="ClasseController?acao=inserir">
+
+                    <label for="nome">Nome da Classe:</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="valor">Valor da Classe:</label>
+                    <input type="number" id="valor" name="valor" required>
+
+                    <label for="data">Tempo para devolução:</label>
+                    <input type="number" id="data" name="data" required>
+
+
+                    <button type="submit">Salvar</button>
+                </form>
             </div>
-
-            <div class="modal-container">
-                <div class="modal">
-                    <form method="post" action="ClasseController?acao=inserir">
-
-                        <label for="nome">Nome da Classe:</label>
-                        <input type="text" id="nome" name="nome" required>
-
-                        <label for="valor">Valor da Classe:</label>
-                        <input type="number" id="valor" name="valor" required>
-
-                        <label for="data">Tempo para devolução:</label>
-                        <input type="number" id="data" name="data" required>
+        </div>
 
 
-                        <button type="submit">Salvar</button>
-                    </form>
-                </div>
-            </div>
+        <div class="modal-container" id="container-classe">
+            <div class="modal">
+                <form method="post" action="ClasseController?acao=editar">
+
+                    <input type="hidden" id="id-classe" name="id-classe">
+
+                    <label for="novo-nome">Nome da Classe:</label>
+                    <input type="text" id="novo-nome" name="novo-nome" required>
+
+                    <label for="novo-valor">Valor da Classe:</label>
+                    <input type="number" id="novo-valor" name="novo-valor" required>
 
 
-            <div class="modal-container" id="container-classe">
-                <div class="modal">
-                    <form method="post" action="ClasseController?acao=editar">
-
-                        <input type="hidden" id="id-classe" name="id-classe">
-
-                        <label for="novo-nome">Nome da Classe:</label>
-                        <input type="text" id="novo-nome" name="novo-nome" required>
-
-                        <label for="novo-valor">Valor da Classe:</label>
-                        <input type="number" id="novo-valor" name="novo-valor" required>
+                    <label for="nova-data">Prazo de Devolução:</label>
+                    <input type="number" id="nova-data" name="nova-data" required>
 
 
-                        <label for="nova-data">Prazo de Devolução:</label>
-                        <input type="number" id="nova-data" name="nova-data" required>
-
-
-                        <button type="submit">Atualizar</button>
-                    </form>
-                </div>
+                    <button type="submit">Atualizar</button>
+                </form>
             </div>
         </div>
     </div>
+
+    <div class="modal-container popup-exclusao">
+        <div class="modal">
+            <p>Tem certeza que deseja excluir?</p>
+            <div class="botoes">
+                <button id="confirmar-exclusao">SIM</button>
+                <button id="rejeitar-exclusao">NÃO</button>
+            </div>
+        </div>
+    </div>
+
+</div>
 <script src="classe.js"></script>
 <script src="script.js"></script>
 </body>

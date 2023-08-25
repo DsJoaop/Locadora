@@ -16,90 +16,102 @@
 
 <body>
 
-    <ul class="tabs">
-        <li class="tab-button"><a href="index.jsp"> Ator</a></li>
-        <li class="tab-button"><a href="classe.jsp"> Classe </a></li>
-    </ul>
+<ul class="tabs">
+    <li class="tab-button"><a href="index.jsp"> Ator</a></li>
+    <li class="tab-button"><a href="classe.jsp"> Classe </a></li>
+</ul>
 
 
-    <div class="container">
-        <div id="ator" class="tab-content">
-            <div class="header">
-                <span>Cadastro de Atores</span>
-                <button onclick="openModal()" id="new"><i>Incluir</i></button>
-            </div>
+<div class="container">
+    <div id="ator" class="tab-content">
+        <div class="header">
+            <span>Cadastro de Atores</span>
+            <button onclick="openModal()" id="new"><i>Incluir</i></button>
+        </div>
 
-            <div class="divTable">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome</th>
-                        <th class="acao">Editar</th>
-                        <th class="acao">Excluir</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%
-                        AtorApplication atorApplication = new AtorApplication();
-                        List<AtorDTO> listaAtores = atorApplication.listar(AtorDTO.class);
+        <div class="divTable">
+            <table>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th class="acao">Editar</th>
+                    <th class="acao">Excluir</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                    AtorApplication atorApplication = new AtorApplication();
+                    List<AtorDTO> listaAtores = atorApplication.listar(AtorDTO.class);
 
-                        for (AtorDTO ator : listaAtores) {
-                    %>
-                    <tr>
-                        <td>
-                            <%= ator.getId_ator() %>
-                        </td>
-                        <td>
-                            <%= ator.getNome() %>
-                        </td>
-                        <td class="editar acao">
+                    for (AtorDTO ator : listaAtores) {
+                %>
+                <tr>
+                    <td>
+                        <%= ator.getId_ator() %>
+                    </td>
+                    <td>
+                        <%= ator.getNome() %>
+                    </td>
+                    <td class="editar acao">
                         <button onclick="openModalAtor('<%= ator.getId_ator() %>', '<%= ator.getNome() %>')">
                             <i class='bx bx-edit'></i>
                         </button>
 
-                        </td>
-                        <td class="deletar acao">
-                            <a href="AtorController?acao=excluir&id_ator=<%= ator.getId_ator() %>">
-                                <button><i class='bx bx-trash'></i></button>
-                            </a>
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
+                    </td>
+                    <td class="deletar acao">
+                        <a href="AtorController?acao=excluir&id_ator=<%= ator.getId_ator() %>">
+                            <button><i class='bx bx-trash'></i></button>
+                        </a>
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-container">
+            <div class="modal">
+                <form method="post" action="AtorController?acao=inserir">
+
+                    <label for="m-nome">Nome do Ator:</label>
+                    <input type="text" id="m-nome" name="nome" required>
+
+                    <button type="submit">Salvar</button>
+                </form>
             </div>
-
-            <div class="modal-container">
-                <div class="modal">
-                    <form method="post" action="AtorController?acao=inserir">
-
-                        <label for="m-nome">Nome do Ator:</label>
-                        <input type="text" id="m-nome" name="nome" required>
-
-                        <button type="submit">Salvar</button>
-                    </form>
-                </div>
-            </div>
+        </div>
 
 
-            <div class="modal-container" id="container-ator">
-                <div class="modal">
-                    <form method="post" action="AtorController?acao=editar">
+        <div class="modal-container" id="container-ator">
+            <div class="modal">
+                <form method="post" action="AtorController?acao=editar">
 
-                        <input type="hidden" id="id-ator" name="id_ator">
+                    <input type="hidden" id="id-ator" name="id_ator">
 
-                        <label for="novo-nome">Nome do Ator:</label>
-                        <input type="text" id="novo-nome" name="nome" required>
+                    <label for="novo-nome">Nome do Ator:</label>
+                    <input type="text" id="novo-nome" name="nome" required>
 
-                        <button type="submit">Atualizar</button>
-                    </form>
-                </div>
+                    <button type="submit">Atualizar</button>
+                </form>
             </div>
         </div>
     </div>
+
+    <div class="modal-container popup-exclusao">
+        <div class="modal">
+            <p>Tem certeza que deseja excluir?</p>
+            <div class="botoes">
+                <button id="confirmar-exclusao">SIM</button>
+                <button id="rejeitar-exclusao">NÃO</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
 <script src="ator.js"></script>
 <script src="script.js"></script>
 </body>
