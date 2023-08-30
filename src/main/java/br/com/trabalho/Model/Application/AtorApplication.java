@@ -34,8 +34,7 @@ public class AtorApplication extends GenericApplication{
             consulta.where(restricoes);
 
             atorEncontrado = (AtorDTO) sessao.createQuery(consulta).getSingleResult();
-
-
+            
             sessao.getTransaction().commit();
             sessao.close();
         } catch (NoResultException ex) {

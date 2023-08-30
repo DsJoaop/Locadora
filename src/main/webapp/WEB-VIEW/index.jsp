@@ -21,7 +21,6 @@
     <li class="tab-button"><a href="classe.jsp"> Classe </a></li>
 </ul>
 
-
 <div class="container">
     <div id="ator" class="tab-content">
         <div class="header">
@@ -29,41 +28,49 @@
             <button onclick="openModal()" id="new"><i>Incluir</i></button>
         </div>
 
+        <!-- =========================================================================================== -->
+        <!-- ======================= TABELA PARA EXIBIÇÃO DOS ATORES CADASTRADOS ======================= -->
+        <!-- =========================================================================================== -->
         <div class="divTable">
             <table>
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Nome</th>
                     <th class="acao">Editar</th>
                     <th class="acao">Excluir</th>
                 </tr>
                 </thead>
+
                 <tbody>
                 <%
-                    AtorApplication atorApplication = new AtorApplication();
-                    List<AtorDTO> listaAtores = atorApplication.listar(AtorDTO.class);
+                    AtorApplication atorApplication = new AtorApplication();            // Instância usando o banco (DAO/Application)
+                    List<AtorDTO> listaAtores = atorApplication.listar(AtorDTO.class);  // Coloca a lista de atores na variável "listaAtores"
 
-                    for (AtorDTO ator : listaAtores) {
+                    for (AtorDTO ator : listaAtores) {                                  // Faz um FOR para mostrar todos os atores, criando uma linha pra cada ator
                 %>
                 <tr>
-                    <td>
+
+                    <td>                                                                <!-- Cria uma coluna na linha com o ID do ator -->
                         <%= ator.getId_ator() %>
                     </td>
-                    <td>
+
+                    <td>                                                                <!-- Cria uma coluna na linha com o nome do ator -->
                         <%= ator.getNome() %>
                     </td>
-                    <td class="editar acao">
-                        <button onclick="openModalAtor('<%= ator.getId_ator() %>', '<%= ator.getNome() %>')">
+
+                    <td class="editar acao">                                            <!-- Cria uma coluna na linha com o botão de editar -->
+                        <button onclick="openModalAtor('<%= ator.getId_ator() %>', '<%= ator.getNome() %>')">   <!-- Ao clicar chama a modal de edição, passando id e nome -->
                             <i class='bx bx-edit'></i>
                         </button>
-
                     </td>
-                    <td class="deletar acao">
-                        <a href="AtorController?acao=excluir&id_ator=<%= ator.getId_ator() %>">
+
+                    <td class="deletar acao">                                           <!-- Cria uma coluna na linha com o botão de excluir -->
+                        <a href="AtorController?acao=excluir&id_ator=<%= ator.getId_ator() %>">     <!-- Chama O WebServlet "AtorController" passando paramêtro "ação" com o valor de "excluir" e o parâmetro "id_ator" com o valor do id_ator-->
                             <button><i class='bx bx-trash'></i></button>
                         </a>
                     </td>
+
                 </tr>
                 <%
                     }
@@ -72,34 +79,41 @@
             </table>
         </div>
 
+        <!-- ================================================================================= -->
+        <!-- ======================= MODAL PARA ADICIONAR UM NOVO ATOR ======================= -->
+        <!-- ================================================================================= -->
         <div class="modal-container">
             <div class="modal">
-                <form method="post" action="AtorController?acao=inserir">
-
+                <form method="post" action="AtorController?acao=inserir">   <!-- Chama O WebServlet "AtorController" passando paramêtro "ação" com o valor de "inserir" -->
                     <label for="m-nome">Nome do Ator:</label>
                     <input type="text" id="m-nome" name="nome" required>
 
-                    <button type="submit">Salvar</button>
+                    <button type="submit">Salvar</button>                   <!-- Envia as informações do formulario pro Servlet -->
                 </form>
             </div>
         </div>
 
-
+        <!-- ========================================================================= -->
+        <!-- ======================= MODAL PARA EDITAR UM ATOR ======================= -->
+        <!-- ========================================================================= -->
         <div class="modal-container" id="container-ator">
             <div class="modal">
-                <form method="post" action="AtorController?acao=editar">
-
+                <form method="post" action="AtorController?acao=editar">    <!-- Chama O WebServlet "AtorController" passando paramêtro "ação" com o valor de "editar" -->
                     <input type="hidden" id="id-ator" name="id_ator">
 
                     <label for="novo-nome">Nome do Ator:</label>
                     <input type="text" id="novo-nome" name="nome" required>
 
-                    <button type="submit">Atualizar</button>
+                    <button type="submit">Atualizar</button>                <!-- Envia as informações do formulario pro Servlet -->
                 </form>
             </div>
         </div>
+
     </div>
 
+    <!-- ========================================================================================== -->
+    <!-- ======================= MODAL PARA CONFIRMAR A EXCLUSÃO DE UM ATOR ======================= -->
+    <!-- ========================================================================================== -->
     <div class="modal-container popup-exclusao">
         <div class="modal">
             <p>Tem certeza que deseja excluir?</p>
@@ -110,10 +124,8 @@
         </div>
     </div>
 
-
 </div>
 <script src="ator.js"></script>
 <script src="script.js"></script>
 </body>
-
 </html>

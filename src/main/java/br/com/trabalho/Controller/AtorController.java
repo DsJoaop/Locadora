@@ -2,7 +2,6 @@ package br.com.trabalho.Controller;
 
 import br.com.trabalho.Model.Application.AtorApplication;
 import br.com.trabalho.Model.Domain.AtorDTO;
-import br.com.trabalho.Servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +15,8 @@ import java.io.IOException;
 public class AtorController extends HttpServlet {
 
     private AtorApplication banco = new AtorApplication();
+    
     public AtorController() {
-
     }
 
     @Override

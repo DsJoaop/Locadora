@@ -6,7 +6,6 @@ const btNao = document.getElementById('rejeitar-exclusao')
 let btSimClick = false;
 let btNaoClick = false;
 
-
 function openModal() {
     modal.classList.add('active');
 
@@ -45,8 +44,6 @@ linksExcluir.forEach(function (link) {
                 btSimClick = false;
                 btNaoClick = false;
             }
-
-
         }
     });
 });

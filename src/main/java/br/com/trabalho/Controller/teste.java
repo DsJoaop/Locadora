@@ -9,17 +9,18 @@ import java.util.List;
 
 public class teste {
     public static void main(String[] args){
-
         AtorApplication banco = new AtorApplication();
-        AtorDTO ator = new AtorDTO("Joao");
+        AtorDTO ator1 = new AtorDTO("Joao");
+        AtorDTO ator2 = new AtorDTO("William");
+        banco.inserir(ator1);
+        banco.inserir(ator2);
 
-        banco.inserir(ator);
-
-        ClasseApplication classeApplication = new ClasseApplication();
-        ClasseDTO classe = new ClasseDTO("classe", 20, 30);
-
-        classeApplication.inserir(classe);
-
-
+        List<AtorDTO> listaAtores = banco.listar(AtorDTO.class);
+        
+        System.out.println("\n\n====== MOSTRANDO ATORES CADASTRADOS NO BANCO ======");
+        for(AtorDTO ator : listaAtores){
+            System.out.println("Nome do ator: " + ator.getNome());
+        }
+        System.out.println("====== MOSTRANDO ATORES CADASTRADOS NO BANCO ======\n\n");
     }
 }
